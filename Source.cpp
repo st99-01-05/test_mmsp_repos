@@ -15,8 +15,8 @@ using namespace std;
 double AbsoluteValue(double a)
 {
 	if (a > 0) return a;
-	else return -a;
-}
+	else return -a; // berjuvberijberil
+} 
 
 double functionM(double x)
 {
