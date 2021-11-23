@@ -27,6 +27,7 @@ double functionM(double x)
 	else if (x > 0.3 && x <= 1.0)
 	{
 		return (valuea * valueP * (valuel - x)) / (valueE * valueJ * valuel);
+		return (valuea * valueP * (valuel - x)) / (valueE * valueJ * valuel);
 	}
 
 }
@@ -48,25 +49,25 @@ double FunctionValue(double x, double step, int n)
 
 	for (int i = 1; i <= n; i++)
 	{
-		value1[i] = value1[i - 1] + value2[i - 1] * step; //èòåğ. ñõåìà ìåòîäà İéëåğà
+		value1[i] = value1[i - 1] + value2[i - 1] * step; //Ã¨Ã²Ã¥Ã°. Ã±ÃµÃ¥Ã¬Ã  Ã¬Ã¥Ã²Ã®Ã¤Ã  ÃÃ©Ã«Ã¥Ã°Ã 
 		value2[i] = value2[i - 1] + functionM((i - 1) * step) * step;
 	}
 
 	double value = value1[n];
-	cout << "Çíà÷åíèå ôóíêöèè â l ïğè x = " << x << " := " << value << "\n";
+	cout << "Ã‡Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨ Ã¢ l Ã¯Ã°Ã¨ x = " << x << " := " << value << "\n";
 	delete value1;
 	delete value2;
 	return value;
 }
 
-double FindSolution(double a, double b, double h, double e, int& check) // a - ëåâàÿ ãğàíèöà ïğîìåæóòêà, b - ïğàâàÿ ãğàíèöà ïğîìåæóòêà, e - òî÷íîñòü âû÷èñëåíèé
+double FindSolution(double a, double b, double h, double e, int& check) // a - Ã«Ã¥Ã¢Ã Ã¿ Ã£Ã°Ã Ã­Ã¨Ã¶Ã  Ã¯Ã°Ã®Ã¬Ã¥Ã¦Ã³Ã²ÃªÃ , b - Ã¯Ã°Ã Ã¢Ã Ã¿ Ã£Ã°Ã Ã­Ã¨Ã¶Ã  Ã¯Ã°Ã®Ã¬Ã¥Ã¦Ã³Ã²ÃªÃ , e - Ã²Ã®Ã·Ã­Ã®Ã±Ã²Ã¼ Ã¢Ã»Ã·Ã¨Ã±Ã«Ã¥Ã­Ã¨Ã©
 {
 	check++;
 
-	double c = (b + a) / 2.0; // Ñåğåäèíà îòğåçêà
+	double c = (b + a) / 2.0; // Ã‘Ã¥Ã°Ã¥Ã¤Ã¨Ã­Ã  Ã®Ã²Ã°Ã¥Ã§ÃªÃ 
 	double fa = FunctionValue(a, h, 1.0 / h), fb = FunctionValue(b, h, 1.0 / h), fc = FunctionValue(c, h, 1.0 / h);
 
-	if (AbsoluteValue(fa) < (e + 0.0)) // Ïğîâåğêà íà âûõîä èç ôóíêöèè
+	if (AbsoluteValue(fa) < (e + 0.0)) // ÃÃ°Ã®Ã¢Ã¥Ã°ÃªÃ  Ã­Ã  Ã¢Ã»ÃµÃ®Ã¤ Ã¨Ã§ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨
 	{
 		return a;
 	}
@@ -86,11 +87,11 @@ double FindSolution(double a, double b, double h, double e, int& check) // a - ë
 		}
 	}
 
-	if (fa * fc < 0) // Åñëè çíàêè öåíòğà è ëåâîé ãğàíèöû ğàçëè÷íû, òî ğàáîòàåì ñ ëåâîé ïîëîâèíîé.
+	if (fa * fc < 0) // Ã…Ã±Ã«Ã¨ Ã§Ã­Ã ÃªÃ¨ Ã¶Ã¥Ã­Ã²Ã°Ã  Ã¨ Ã«Ã¥Ã¢Ã®Ã© Ã£Ã°Ã Ã­Ã¨Ã¶Ã» Ã°Ã Ã§Ã«Ã¨Ã·Ã­Ã», Ã²Ã® Ã°Ã Ã¡Ã®Ã²Ã Ã¥Ã¬ Ã± Ã«Ã¥Ã¢Ã®Ã© Ã¯Ã®Ã«Ã®Ã¢Ã¨Ã­Ã®Ã©.
 	{
 		return FindSolution(a, c, h, e, check);
 	}
-	else // Èíà÷å ğàáîòàåì ñ ïğàâîé.
+	else // ÃˆÃ­Ã Ã·Ã¥ Ã°Ã Ã¡Ã®Ã²Ã Ã¥Ã¬ Ã± Ã¯Ã°Ã Ã¢Ã®Ã©.
 	{
 		return FindSolution(c, b, h, e, check);
 	}
@@ -102,7 +103,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	double h = 0.0;
 
-	cout << "Ââåäèòå øàã: ";
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¸Ã Ã£: ";
 	cin >> h;
 
 	int check = 0, count = 1;
@@ -113,11 +114,11 @@ int main()
 		left -= 100.0;
 	}
 
-	cout << "\nËåâàÿ ãğàíèöà:" << left << " Ïğàâàÿ:" << right << endl;
+	cout << "\nÃ‹Ã¥Ã¢Ã Ã¿ Ã£Ã°Ã Ã­Ã¨Ã¶Ã :" << left << " ÃÃ°Ã Ã¢Ã Ã¿:" << right << endl;
 
 	double solut = FindSolution(left, right, h, eps, check);
 
-	cout << "Óñëîâèå íà ïğîèçâîäíóş â íóëå: y'(0) = " << solut << "\n";
+	cout << "Ã“Ã±Ã«Ã®Ã¢Ã¨Ã¥ Ã­Ã  Ã¯Ã°Ã®Ã¨Ã§Ã¢Ã®Ã¤Ã­Ã³Ã¾ Ã¢ Ã­Ã³Ã«Ã¥: y'(0) = " << solut << "\n";
 	int n = 1.0 / h;
 
 	double* value1 = new double[n + 1];
@@ -134,7 +135,7 @@ int main()
 
 	for (int i = 1; i <= n; i++)
 	{
-		value1[i] = value1[i - 1] + value2[i - 1] * h; //èòåğ. ñõåìà ìåòîäà İéëåğà
+		value1[i] = value1[i - 1] + value2[i - 1] * h; //Ã¨Ã²Ã¥Ã°. Ã±ÃµÃ¥Ã¬Ã  Ã¬Ã¥Ã²Ã®Ã¤Ã  ÃÃ©Ã«Ã¥Ã°Ã 
 		value2[i] = value2[i - 1] + functionM((i - 1) * h) * h;
 	}
 
@@ -145,7 +146,7 @@ int main()
 		out /*<<i*h <<"\t" */ << value1[i] << "\n";
 	}
 
-	std::cout << "\n×èñëî èòåğàöèé: " << check << "\n";
+	std::cout << "\nÃ—Ã¨Ã±Ã«Ã® Ã¨Ã²Ã¥Ã°Ã Ã¶Ã¨Ã©: " << check << "\n";
 
 	system("pause");
 	return 0;
